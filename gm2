@@ -1,0 +1,154 @@
+local Material = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/MaterialLua/master/Module.lua"))()
+
+local UI = Material.Load({
+     Title = "Godzilla Simulator 2",
+     Style = 3,
+     SizeX = 350,
+     SizeY = 350,
+     Theme = "Dark"
+})
+
+UI.Banner({
+    Text = "Thank You For Your Purchase"
+})
+
+local Page = UI.New({
+    Title = "Main"
+})
+Page.Button({
+    Text = "Tp to City (Must do This for it to work.)",
+    Callback = function()
+        game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(206.830246, 447.067169, 1213.29492, 1, 0, 0, 0, 1, 0, 0, 0, 1)   
+    end
+})
+
+
+
+Page.Toggle({
+    Text = "Auto Punch",
+    Callback = function(value)
+       getgenv().Autopunch = value
+
+while getgenv().Autopunch  do
+   wait(0.8)
+local args = {
+    [1] = "Punch"
+}
+
+game:GetService("ReplicatedStorage").Swing:FireServer(unpack(args))
+end
+    end,
+    Enabled = false
+})
+
+Page.Toggle({
+    Text = "Auto Stop Sign",
+    Callback = function(value)
+    getgenv().AutoStopSign = value
+
+while getgenv().AutoStopSign  do
+    wait(3)
+game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Buildings.Q7.StopSign.Part.CFrame
+end
+    end,
+    Enabled = false
+})
+
+Page.Toggle({
+    Text = "Auto House (Kinda Buggy)",
+    Callback = function(value)
+       getgenv().AutoHouse = value
+
+ while getgenv().AutoHouse do
+     wait(3)
+game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Buildings.Q7.House1.Part.CFrame
+end
+    end,
+    Enabled = false
+})
+
+Page.Toggle({
+    Text = "Auto School",
+    Callback = function(value)
+       getgenv().Autoschool = value
+while getgenv().Autoschool do
+    wait(2)
+game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Buildings.Q7.School.Part.CFrame
+end
+    end,
+    Enabled = false
+})
+
+Page.Toggle({
+    Text = "Auto Car",
+    Callback = function(value)
+      getgenv().AutoCar = value
+
+while getgenv().AutoCar do
+    wait(3)
+game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Buildings.Q7.Cars.Car.Main.CFrame
+end
+    end,
+    Enabled = false
+})
+
+Page.Toggle({
+    Text = "AutoTower",
+    Callback = function(value)
+        getgenv().AutoTower = value
+while getgenv().AutoTower do
+    wait(2)
+game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Buildings.Q6.Tower2.Part.CFrame
+end
+    end,
+    Enabled = false
+})
+
+local Page2 = UI.New({
+    Title = "Other"
+})
+
+Page2.Button({
+    Text = "Invis",
+    Callback = function()
+          game.Players.LocalPlayer.Character.Monster.MonsterTorso.LowerTorso:Destroy()
+wait()
+game.Players.LocalPlayer.Character.Monster.MonsterLegs.Main:Destroy() 
+    end
+})
+
+local Page3 = UI.New({
+    Title = "Player"
+})
+
+Page3.Slider({
+    Text = "WalkSpeed",
+    Callback = function(value)
+         game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
+    end,
+    Min = 16,
+    Max = 500,
+    Def = 16
+    })
+
+Page3.Slider({
+    Text = "JumpPower",
+    Callback = function(value)
+         game.Players.LocalPlayer.Character.Humanoid.JumpPower = value
+    end,
+    Min = 16,
+    Max = 500,
+    Def = 16
+    })
+
+
+local Page4 = UI.New({
+    Title = "Credits"
+}) 
+
+Page4.Button({
+    Text = "Bought By dasdasd#1081",
+    Callback = function()
+        print("Thank You")    
+    end
+})
